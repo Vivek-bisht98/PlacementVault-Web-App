@@ -23,7 +23,6 @@ Placement Vault is a Django-based web application designed to help students prep
 
 * HTML
 * CSS
-* JavaScript
 
 **Backend**
 
