@@ -50,14 +50,12 @@ PlacementVault/
 ├── templates/
 ├── static/
 ├── screenshots/
-│   ├── dashboard.png
-│   ├── login.png
-│   ├── register.png
-│   ├── publish_experience.png
-│   ├── add_schedule.png
-│   ├── company.png
-│   ├── role.png
-│   └── round.png
+│   ├── Dashboard.png
+│   ├── Login.png
+│   ├── Register.png
+│   ├── experiences.png
+│   ├── Schedule.png
+│   ├── Search.png
 │
 ├── manage.py
 ├── requirements.txt
@@ -71,49 +69,37 @@ PlacementVault/
 
 ## Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/Dashboard.png)
 
 ---
 
 ## Login Page
 
-![Login](screenshots/login.png)
+![Login](screenshots/Login.png)
 
 ---
 
 ## Register Page
 
-![Register](screenshots/register.png)
+![Register](screenshots/Register.png)
 
 ---
 
 ## Publish Experience
 
-![Publish Experience](screenshots/publish_experience.png)
+![Publish Experience](screenshots/experiences.png)
 
 ---
 
 ## Add Schedule
 
-![Add Schedule](screenshots/add_schedule.png)
+![Add Schedule](screenshots/Schedule.png)
 
 ---
 
-## Company Page
+## Company Search Page
 
-![Company](screenshots/company.png)
-
----
-
-## Role Page
-
-![Role](screenshots/role.png)
-
----
-
-## Interview Round Page
-
-![Round](screenshots/round.png)
+![Company](screenshots/Search.png)
 
 ---
 
