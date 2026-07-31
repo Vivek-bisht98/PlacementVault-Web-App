@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Confirm Delete &middot; PlacementVault{% endblock %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">Confirm</p>
+    <h1>Delete this entry?</h1>
+    <p class="delete-preview">{{ object_label }}</p>
+    <p class="text-muted">This can't be undone.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url cancel_url_name %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

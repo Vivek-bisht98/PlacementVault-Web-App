@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{ company }} &middot; {{ role }} &middot; {{ round }}{% endblock %}
+{% block content %}
+<p class="breadcrumb">
+    <a href="{% url 'search_company' %}">Companies</a> <span>&rsaquo;</span>
+    <a href="{% url 'search_roles' %}?company={{ company|urlencode }}">{{ company }}</a> <span>&rsaquo;</span>
+    <a href="{% url 'search_rounds' %}?company={{ company|urlencode }}&amp;role={{ role|urlencode }}">{{ role }}</a> <span>&rsaquo;</span>
+    {{ round }}
+</p>
+<h1>{{ company }} <span class="text-muted">&mdash; {{ role }} &middot; {{ round }}</span></h1>
+
+{% if experiences %}
+<div class="card-list">
+    {% for e in experiences %}
+    <div class="exp-card">
+        <span class="stamp stamp-tilt">{{ e.focus_subject }}</span>
+        <h3>{{ e.user.username }}</h3>
+        <p>{{ e.experience_text }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">No experiences found for this combination yet.</p>
+{% endif %}
+{% endblock %}

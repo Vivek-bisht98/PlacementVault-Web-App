@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Search &middot; PlacementVault{% endblock %}
+{% block content %}
+<p class="eyebrow">Search</p>
+<h1>Browse Interview Experiences</h1>
+<p class="subtitle">Pick a company to see the roles, rounds, and experiences other students have shared.</p>
+
+{% if companies %}
+<div class="chip-list">
+    {% for c in companies %}
+    <a class="chip" href="{% url 'search_roles' %}?company={{ c|urlencode }}">{{ c }}</a>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">No experiences have been published yet. <a href="{% url 'experience_add' %}">Be the first to share one</a>.</p>
+{% endif %}
+{% endblock %}

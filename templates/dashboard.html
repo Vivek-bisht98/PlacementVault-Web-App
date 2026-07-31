@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard &middot; PlacementVault{% endblock %}
+{% block content %}
+<p class="eyebrow">Dashboard</p>
+<h1>Welcome, {{ user.username }}</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span class="stamp">Total</span>
+        <span class="stat-number">{{ schedule_count }}</span>
+        <span class="stat-label">Scheduled Interviews</span>
+    </div>
+    <div class="stat-card">
+        <span class="stamp">Total</span>
+        <span class="stat-number">{{ experience_count }}</span>
+        <span class="stat-label">Published Experiences</span>
+    </div>
+</div>
+
+<section class="section">
+    <div class="page-header">
+        <h2>Upcoming Interviews</h2>
+        <a href="{% url 'schedule_add' %}" class="btn btn-secondary btn-sm">+ Add Schedule</a>
+    </div>
+    {% if upcoming_schedules %}
+    <div class="ledger">
+        {% for s in upcoming_schedules %}
+        <div class="ledger-row">
+            <span class="ledger-badge">{{ s.interview_round }}</span>
+            <div class="ledger-main">
+                <strong>{{ s.company_name }}</strong> &mdash; {{ s.role }}
+            </div>
+            <div class="ledger-when">{{ s.date }} &middot; {{ s.time }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">Nothing scheduled yet. <a href="{% url 'schedule_add' %}">Add your next interview</a>.</p>
+    {% endif %}
+</section>
+{% endblock %}

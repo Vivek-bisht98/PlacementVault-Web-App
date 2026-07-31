@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ company }} &middot; {{ role }} &middot; Rounds{% endblock %}
+{% block content %}
+<p class="breadcrumb">
+    <a href="{% url 'search_company' %}">Companies</a> <span>&rsaquo;</span>
+    <a href="{% url 'search_roles' %}?company={{ company|urlencode }}">{{ company }}</a> <span>&rsaquo;</span>
+    {{ role }}
+</p>
+<h1>{{ role }} <span class="text-muted">&mdash; Rounds</span></h1>
+
+{% if rounds %}
+<div class="chip-list">
+    {% for rd in rounds %}
+    <a class="chip" href="{% url 'search_experiences' %}?company={{ company|urlencode }}&amp;role={{ role|urlencode }}&amp;round={{ rd|urlencode }}">{{ rd }}</a>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">No rounds found for this role yet.</p>
+{% endif %}
+{% endblock %}

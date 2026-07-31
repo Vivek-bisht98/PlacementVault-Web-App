@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }} &middot; PlacementVault{% endblock %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">Experience</p>
+    <h1>{{ page_title }}</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.company_name.id_for_label }}">Company Name</label>
+            {{ form.company_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.role.id_for_label }}">Job Role</label>
+            {{ form.role }}
+            <datalist id="role-options">
+                {% for r in role_choices %}<option value="{{ r }}">{% endfor %}
+            </datalist>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.interview_round.id_for_label }}">Interview Round</label>
+                {{ form.interview_round }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.focus_subject.id_for_label }}">Major Focus Subject</label>
+                {{ form.focus_subject }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.experience_text.id_for_label }}">Detailed Interview Experience</label>
+            {{ form.experience_text }}
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'experience_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

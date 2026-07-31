@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}My Schedule &middot; PlacementVault{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Schedule</p>
+        <h1>My Interview Schedule</h1>
+    </div>
+    <a href="{% url 'schedule_add' %}" class="btn btn-primary">+ Add Schedule</a>
+</div>
+
+{% if schedules %}
+<div class="ledger">
+    {% for s in schedules %}
+    <div class="ledger-row">
+        <span class="ledger-badge">{{ s.interview_round }}</span>
+        <div class="ledger-main">
+            <strong>{{ s.company_name }}</strong> &mdash; {{ s.role }}
+        </div>
+        <div class="ledger-when">{{ s.date }} &middot; {{ s.time }}</div>
+        <div class="row-actions">
+            <a href="{% url 'schedule_edit' s.pk %}">Edit</a>
+            <a href="{% url 'schedule_delete' s.pk %}" class="text-danger">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">You haven't scheduled any interviews yet. <a href="{% url 'schedule_add' %}">Add your first one</a>.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ company }} &middot; Roles{% endblock %}
+{% block content %}
+<p class="breadcrumb"><a href="{% url 'search_company' %}">Companies</a> <span>&rsaquo;</span> {{ company }}</p>
+<h1>{{ company }} <span class="text-muted">&mdash; Roles</span></h1>
+
+{% if roles %}
+<div class="chip-list">
+    {% for r in roles %}
+    <a class="chip" href="{% url 'search_rounds' %}?company={{ company|urlencode }}&amp;role={{ r|urlencode }}">{{ r }}</a>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">No roles found for this company yet.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}My Experiences &middot; PlacementVault{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Experiences</p>
+        <h1>My Published Experiences</h1>
+    </div>
+    <a href="{% url 'experience_add' %}" class="btn btn-primary">+ Publish Experience</a>
+</div>
+
+{% if experiences %}
+<div class="card-list">
+    {% for e in experiences %}
+    <div class="exp-card">
+        <span class="stamp stamp-tilt">{{ e.interview_round }}</span>
+        <h3>{{ e.company_name }} &mdash; {{ e.role }}</h3>
+        <p class="exp-meta">Focus: {{ e.focus_subject }} &middot; Published {{ e.created_at|date:"M d, Y" }}</p>
+        <p>{{ e.experience_text|truncatewords:40 }}</p>
+        <div class="row-actions">
+            <a href="{% url 'experience_edit' e.pk %}">Edit</a>
+            <a href="{% url 'experience_delete' e.pk %}" class="text-danger">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">You haven't published any experiences yet. <a href="{% url 'experience_add' %}">Share your first one</a>.</p>
+{% endif %}
+{% endblock %}
